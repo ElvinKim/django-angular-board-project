@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Title</title>
+    {% endblock %}
+
+    <script type="text/javascript" src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/angularjs/angular.min.js' %}"></script>
+    {% block javascript %}
+    {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+{% endblock %}
+</body>
+<footer>
+    {% block footer %}
+
+    {% endblock %}
+</footer>
+</html>
