@@ -11,12 +11,16 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import sys
+
+sys.path.append(os.path.abspath("../config"))
+sys.path.append(os.path.abspath("../member"))
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Project paths
-PROJECT_DIR = os.path.abspath(os.path.dirname(__name__))
+PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
 
 print PROJECT_DIR
 
@@ -133,9 +137,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-STATIC_URL = PROJECT_DIR + '/static/'
-
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_DIR, 'static')
+    os.path.join(PROJECT_DIR, 'static'),
 )
+
+STATIC_URL = '/static/'
+
+

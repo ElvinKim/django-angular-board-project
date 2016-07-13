@@ -1,1 +1,36 @@
-{% extends 'base.html' %}
+{% extends 'base.html'%}
+{% load staticfiles %}
+
+{% block title %}
+<title>Member:Join</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/app/member_join.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="body" ng-controller="MemberJoinCtrl">
+    <div>
+      <div class="form-group">
+        <label>User ID</label>
+        <input type="id" class="form-control" placeholder="User ID" ng-model="userId">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" placeholder="Password" ng-model="password">
+      </div>
+      <div class="form-group">
+        <label>Check Password</label>
+        <input type="password" class="form-control" placeholder="Check Password" ng-model="checkPassword">
+      </div>
+      <div class="form-group">
+        <button ng-click="register()"  type="button" class="btn btn-primary btn-lg btn-block btn-join" ng-disabled="checkFieldValid()" disabled>Join!</button>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="{% static 'js/app/member_join.js' %}"></script>
+{% endblock %}
