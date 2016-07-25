@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+
+{% block title %}
+<title>Board:List</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/app/board_list.css' %}">
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{% static 'js/module/sha256.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap/ui-bootstrap-tpls-0.12.1.min.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="body">
+    <h1 style="text-align: center;">Django + AngularJs Board</h1>
+
+    <div ng-controller="UserInfoCtrl" style="display:flex; float: right;">
+        <div style="margin-right: 20px;">{{ member_user }}</div>
+        <div style="cursor:pointer" ng-click="logout()" ng-show="{{member_id}} != 0" ng-cloak>logout</div>
+        <div style="cursor:pointer" ng-click="moveToLogin()" ng-show="{{member_id}} == 0" ng-cloak>login</div>
+    </div>
+    <div ng-controller="BoardListCtrl">
+        <table class="table table-bordered">
+            <tr>
+                <th style="width:50px">index</th>
+                <th>title</th>
+                <th style="width:100px">writer</th>
+                <th style="width:100px">regdt</th>
+            </tr>
+
+            <tr ng-repeat="posting in boardList" ng-click="moveToView($event, posting)" ng-cloak style="cursor:pointer">
+                <td>{[{posting.id}]}</td>
+                <td>{[{posting.title}]}</td>
+                <td>{[{posting.writer}]}</td>
+                <td>{[{posting.regdt}]}</td>
+            </tr>
+        </table>
+        <pagination
+            ng-model="currentPage"
+            total-items="totalCnt"
+            max-size="maxSize"
+            boundary-links="true">
+        </pagination>
+    </div>
+    <div style="display:flex; float: right;" ng-controller="BtnCtrl">
+        <button ng-click="moveToWrite()" type="button" class="btn btn-default btn-write">Write</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="{% static 'js/app/board_list.js' %}"></script>
+{% endblock %}

@@ -6,10 +6,10 @@ from member.models import Member
 class Board(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
-    member = models.ForeignKey(Member, null=True)
+    member = models.ForeignKey(Member, null=True, related_name="writer")
     view_cnt = models.IntegerField(default=0)
-    moddt = models.DateTimeField()
-    regdt = models.DateTimeField()
+    moddt = models.DateTimeField(null=True, auto_now_add=True)
+    regdt = models.DateTimeField(null=True, auto_now_add=True)
 
     class Meta():
         db_table = "tbl_board"

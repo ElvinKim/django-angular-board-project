@@ -7,7 +7,7 @@ from datetime import datetime
 
 class Member(models.Model):
     user = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
+    password = models.CharField(max_length=64)
     moddt = models.DateTimeField(default=datetime.now, blank=True)
     regdt = models.DateTimeField(default=datetime.now, blank=True)
 

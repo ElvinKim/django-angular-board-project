@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="{% static 'css/app/member_login.css' %}">
 {% endblock %}
 
+{% block javascript %}
+<script type="text/javascript" src="{% static 'js/module/sha256.js' %}"></script>
+{% endblock %}
+
 {% block body %}
 <div class="body" ng-controller="MemberLoginCtrl">
     <div>
@@ -24,6 +28,8 @@
             <button ng-click="login()"  type="button" class="btn btn-primary btn-lg btn-block btn-join" ng-disabled="checkFieldValid()" disabled>Login!</button>
         </div>
     </div>
+
+    <div style="text-align: center; cursor: pointer;" ng-click="moveToJoin()">Move to join</div>
 </div>
 {% endblock %}
 

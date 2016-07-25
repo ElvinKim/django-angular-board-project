@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+
+{% block title %}
+<title>Board:List</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/app/board_list.css' %}">
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{% static 'js/module/sha256.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="body" ng-controller="BoardWriteCtrl"  memberid="{{ member_id }}">
+    <div>
+        <div class="form-group">
+            <label >Writer</label>
+            <div>{{ member_user }}</div>
+            <label style="margin-top:20px">Title</label>
+            <input type="text" class="form-control" placeholder="Title" ng-model="title">
+            <label style="margin-top:20px">Content</label>
+            <textarea class="form-control" rows="7" ng-model="content"></textarea>
+        </div>
+
+        <button ng-click="submit()" type="submit" class="btn btn-default">Submit</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="{% static 'js/app/board_write.js' %}"></script>
+{% endblock %}

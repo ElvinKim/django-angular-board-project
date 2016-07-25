@@ -1,7 +1,6 @@
 #Basic Info
 MAIN_URL = "http://localhost:8000"
 
-
 #STS
 SUCCESS = 1000
 
@@ -17,7 +16,6 @@ ERR_USER_PARAM = 100
 ERR_DB_SELECT = 200
 ERR_DB_INSERT = 201
 ERR_DB_UPDATE = 202
-ERR_DB_DELETE = 203
 
 #MSG
 MSG = {
@@ -27,7 +25,5 @@ MSG = {
     ERR_DB_SELECT : "Database Select Error",
     ERR_DB_INSERT : "Database Insert Error",
     ERR_DB_UPDATE : "Database Update Error",
-    ERR_DB_DELETE : "Database Delete Error",
 }
-
 

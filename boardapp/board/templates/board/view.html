@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+
+{% block title %}
+<title>Board:View</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/app/board_view.css' %}">
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
+
+{% block body %}
+<div class="body" ng-controller="BoardViewCtrl" id="{{posting_id}}">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        <h1 class="panel-title" ng-cloak>{[{posting.title}]}</h1>
+        </div>
+        <div class="panel-body" ng-cloak>
+        {[{posting.content}]}
+        </div>
+    </div>
+
+    <div style="text-align:right">
+        <button class="btn btn-default btn-edit" type="button" ng-show="posting.member == {{member_id}}" ng-click="editPosting()">Edit</button>
+        <button class="btn btn-default btn-delete" type="button" ng-show="posting.member == {{member_id}}" ng-click="deletePosting()">Delete</button>
+    </div>
+
+    <input type="text" class="form-control" placeholder="comment" style="margin-top:20px; margin-bottom:20px">
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="media">
+                <div class="media-body">
+                    <h4 class="media-heading">Media heading</h4>
+                    comment
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="{% static 'js/app/board_view.js' %}"></script>
+{% endblock %}

@@ -20,5 +20,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^member/', include('member.urls')),
-    url(r'^api/', include('api.urls')),
+    url(r'^api/member', include('member.api_urls')),
+    url(r'^board/', include('board.urls')),
+    url(r'^api/board', include('board.api_urls')),
 ]

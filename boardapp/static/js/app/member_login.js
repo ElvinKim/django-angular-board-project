@@ -4,17 +4,25 @@ var app = angular.module('app', [])
 app.controller("MemberLoginCtrl", function($scope, $http) {
     $scope.login = function() {
         var sendData = {};
-        var reqUrl = MAIN_URL + "/api/member";
+        var reqUrl = MAIN_URL + "/api/member?";
 
         sendData["userId"] = $scope.userId;
-        sendData["password"] = $scope.password;
+        sendData["password"] = Sha256.hash($scope.password);
 
-        reqHttpGET($http, reqUrl, sendData, function(data) {
+        reqUrl += serialize(sendData);
+
+        reqHttp("GET", $http, reqUrl, null, function(data) {
             if(data.STS == SUCCESS) {
-                window.location.href = "/board";
+                window.location.href = "/board/list";
             }
         });
     };
+
+
+    $scope.moveToJoin = function() {
+        window.location.href = "/member/join";
+    };
+
 
     $scope.checkFieldValid = function() {
         if($scope.userId === undefined || $scope.password === undefined) {
