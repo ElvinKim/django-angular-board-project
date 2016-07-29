@@ -47,6 +47,7 @@ PREREQ_APPS = [
 PRODJCT_APPS = [
     "member",
     'board',
+    'comment',
 ]
 
 INSTALLED_APPS = PREREQ_APPS + PRODJCT_APPS

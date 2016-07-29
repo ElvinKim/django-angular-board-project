@@ -10,16 +10,16 @@
 {% endblock %}
 
 {% block javascript %}
+<script type="text/javascript" src="{% static 'js/angularjs/angular-sanitize.min.js' %}"></script>
 {% endblock %}
 
 {% block body %}
-<div class="body" ng-controller="BoardViewCtrl" id="{{posting_id}}">
+<div class="body" ng-controller="BoardViewCtrl" id="{{posting_id}}" memberid="{{member_id}}" member="{{member_user}}">
     <div class="panel panel-default">
         <div class="panel-heading">
-        <h1 class="panel-title" ng-cloak>{[{posting.title}]}</h1>
+        <h1 class="panel-title" ng-cloak>{[{title}]}</h1>
         </div>
-        <div class="panel-body" ng-cloak>
-        {[{posting.content}]}
+        <div class="panel-body" ng-cloak ng-bind-html="content">
         </div>
     </div>
 
@@ -28,17 +28,19 @@
         <button class="btn btn-default btn-delete" type="button" ng-show="posting.member == {{member_id}}" ng-click="deletePosting()">Delete</button>
     </div>
 
-    <input type="text" class="form-control" placeholder="comment" style="margin-top:20px; margin-bottom:20px">
+    <input type="text" class="form-control" placeholder="comment" style="margin-top:20px; margin-bottom:20px" submit-comment ng-model="comment">
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <div class="media">
-                <div class="media-body">
-                    <h4 class="media-heading">Media heading</h4>
-                    comment
+            <div class="media" ng-repeat="commentItem in commentList">
+                <div class="media-body" idx="{[{commentItem.id}]}" ng-cloak>
+                    <h4 class="media-heading">{[{commentItem.comment}]}</h4>
+                    {[{commentItem.comment_writer}]} - {[{commentItem.regdt}]}
                 </div>
                 <hr>
             </div>
+
+            <div ng-show="commentList.length == 0">There is no comment</div>
         </div>
     </div>
 </div>

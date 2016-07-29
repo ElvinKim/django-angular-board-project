@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
@@ -5,6 +7,8 @@ from rest_framework.pagination import PageNumberPagination
 from config.constants import *
 from models import Board
 from serializers import BoardListSerializer
+
+
 
 @api_view(['GET', 'POST'])
 def board(request):
@@ -48,7 +52,7 @@ def board(request):
         return Response(response)
 
 
-@api_view(['GET', 'DELETE'])
+@api_view(['GET', 'DELETE', "PUT"])
 def board_detail(request, id):
     response = {}
     result = {}
@@ -69,13 +73,12 @@ def board_detail(request, id):
     if request.method == "DELETE":
         result["id"] = id
 
-
         posting = Board.objects.filter(id=id)
 
         if len(posting) != 1:
             response["STS"] = ERR_DB_DELETE
-            response["MSG"] = MSG[SUCCESS]
-            response["MSG"] = result
+            response["MSG"] = MSG[ERR_DB_DELETE]
+            response["DAT"] = result
         else :
             posting[0].delete()
             response["STS"] = SUCCESS
@@ -83,4 +86,44 @@ def board_detail(request, id):
             response["DAT"] = result
 
         return Response(response)
+
+
+    if request.method == "PUT":
+        result["id"] = id
+
+        member = request.data["memberId"]
+        posting_id = request.data["postingId"]
+        title = request.data["title"]
+        content = request.data["content"]
+
+        posting = Board.objects.filter(id=posting_id, member=member)
+
+        if id != posting_id:
+            response["STS"] = ERR_DB_UPDATE
+            response["MSG"] = MSG[ERR_DB_UPDATE]
+            response["DAT"] = result
+
+            return Response(response)
+
+        if len(posting) != 1:
+            response["STS"] = ERR_DB_UPDATE
+            response["MSG"] = MSG[ERR_DB_UPDATE]
+            response["DAT"] = result
+
+            return Response(response)
+        else:
+            posting = posting[0]
+
+        posting.title = title
+        posting.content = content
+        posting.moddt = datetime.now()
+
+        posting.save()
+
+        response["STS"] = SUCCESS
+        response["MSG"] = MSG[SUCCESS]
+        response["DAT"] = result
+
+        return Response(response)
+
 

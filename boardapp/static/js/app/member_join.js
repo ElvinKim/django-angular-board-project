@@ -1,4 +1,4 @@
-var app = angular.module('app', [])
+var app = angular.module('app', []);
 
 // CONTROLLER
 app.controller("MemberJoinCtrl", function($scope, $http) {

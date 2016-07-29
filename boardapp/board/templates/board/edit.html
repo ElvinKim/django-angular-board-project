@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title %}
-<title>Board:Write</title>
+<title>Board:Edit</title>
 {% endblock %}
 
 {% block css %}
@@ -10,11 +10,10 @@
 {% endblock %}
 
 {% block javascript %}
-<script type="text/javascript" src="{% static 'js/module/sha256.js' %}"></script>
 {% endblock %}
 
 {% block body %}
-<div class="body" ng-controller="BoardWriteCtrl"  memberid="{{ member_id }}">
+<div class="body" ng-controller="BoardEditCtrl"  memberid="{{ member_id }}" id="{{posting_id}}">
     <div>
         <div class="form-group">
             <label >Writer</label>
@@ -31,5 +30,5 @@
 {% endblock %}
 
 {% block footer %}
-<script type="text/javascript" src="{% static 'js/app/board_write.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/app/board_edit.js' %}"></script>
 {% endblock %}

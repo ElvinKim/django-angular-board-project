@@ -18,11 +18,11 @@
     <div>
         <div class="form-group">
             <label>User ID</label>
-            <input type="id" class="form-control" placeholder="User ID" ng-model="userId">
+            <input type="id" class="form-control" placeholder="User ID" ng-model="userId" login-submit>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control" placeholder="Password" ng-model="password">
+            <input type="password" class="form-control" placeholder="Password" ng-model="password"  login-submit>
         </div>
         <div class="form-group">
             <button ng-click="login()"  type="button" class="btn btn-primary btn-lg btn-block btn-join" ng-disabled="checkFieldValid()" disabled>Login!</button>

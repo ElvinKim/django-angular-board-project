@@ -4,7 +4,7 @@ function reqHttp(method, $http, url, data, success_callback, fail_callback) {
         method: method
     }
 
-    if(method == "POST") {
+    if(method == "POST" || method == "PUT") {
         httpObj["headers"] = {'Content-Type': 'application/x-www-form-urlencoded'};
         httpObj["transformRequest"] = function(obj) {
                                             var str = [];
@@ -24,6 +24,7 @@ function reqHttp(method, $http, url, data, success_callback, fail_callback) {
         }
     });
 }
+
 
 function serialize(obj) {
     var str = [];

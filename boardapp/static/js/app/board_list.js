@@ -21,6 +21,7 @@ app.controller("BoardListCtrl", function($scope, $http) {
     $scope.numPerPage = 10;
     $scope.maxSize = 5;
 
+
     //WATCH FUNCTION
     $scope.$watch('currentPage + numPerPage', function() {
         var begin = (($scope.currentPage - 1) * $scope.numPerPage)

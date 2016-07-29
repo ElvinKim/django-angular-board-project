@@ -1,4 +1,4 @@
-var app = angular.module('app', [])
+var app = angular.module('app', []);
 
 // Controller
 app.controller("BoardWriteCtrl", function($scope, $http, $attrs) {
