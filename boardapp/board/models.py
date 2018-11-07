@@ -13,3 +13,4 @@ class Board(models.Model):
 
     class Meta():
         db_table = "tbl_board"
+        print("test")
