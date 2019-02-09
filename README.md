@@ -1,4 +1,4 @@
-#Django와 Angular JS 를 이용한 게시판 만들기
+# Django와 Angular JS 를 이용한 게시판 만들기
 Django과 AngluarJS를 학습하는 목적으로 간단한 게시판을 만들어 보았다.
 
 ## Back-end
